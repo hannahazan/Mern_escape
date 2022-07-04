@@ -2,9 +2,7 @@ import axios from "axios";
 import React,{useEffect, useState} from "react";
 
 const DisplayRoom=() =>{
-    useEffect(()=>{
-        getImage()
-       },[])
+    
     const [images, setImages]= useState([])
     const getImage=()=>{
         return axios
@@ -13,6 +11,10 @@ const DisplayRoom=() =>{
         setImages(res.data)})
         .catch((err)=>console.error(err))
    }
+    useEffect(()=>{
+        getImage()
+       },[])
+    
    console.log(images)
     return(
         <div>
