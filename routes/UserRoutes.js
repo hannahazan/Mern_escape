@@ -9,8 +9,9 @@ routerUsers.get('/', async (req, res) => {
     res.json(users);
 })
 
-routerUsers.get('/:lastName', async (req, res) => {
-    let userName = await showOneUser(req.params.name)
+routerUsers.get('/:id', async (req, res) => {
+    let userName = await showOneUser(req.params.id)
+    console.log(req.params.firstName)
     res.json(userName)
 })
 
@@ -19,14 +20,14 @@ routerUsers.post('/', async (req, res) => {
     res.send('ok')
 })
 
-routerUsers.put('/:lastName', async (req, res) => {
-    console.log(req.params.name);
-    let updateOneUser = await updateUser(req.params.name,req.body)
+routerUsers.put('/:id', async (req, res) => {
+    console.log(req.params.firstName);
+    let updateOneUser = await updateUser(req.params.id,req.body)
     res.send(updateOneUser)
         });
 
 
-routerUsers.delete('/:lastName', function (req, res) {
+routerUsers.delete('/:id', function (req, res) {
     let deletOne= deleteOneUser(req.params.id)
     res.send('done')
 })
